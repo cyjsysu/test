@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="aaa">
+
+<script>
+    let oInput = document.getElementById('aaa');
+
+    // onchange 不能实时监控，失去焦点才能触发
+    // oInput.onchange = function(){
+    //     console.log(oInput.value);
+    // }
+
+    oInput.onkeyup = function(){
+        console.log(oInput.value);
+    };
+
+    let res = window.confirm('Hello');
+    console.log(res);
+</script>
+</body>
+</html>

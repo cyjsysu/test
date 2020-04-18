@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .layout {
+            color: white;
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+        }
+        .header, .footer{
+            height: 100px;
+            background-color: orange;
+        }
+        .middle{
+            width: 100%;
+            height: calc(100% - 200px);
+            background-color: #4cd764;
+            display: flex;
+            justify-content: space-between;
+        }
+        .middle div:nth-of-type(1), .middle div:nth-of-type(3){
+            flex: 0 0 300px;
+            background-color: rebeccapurple;
+        }
+        .middle div:nth-of-type(2){
+            background-color: navajowhite;
+            flex: 1 0 auto;
+        }
+    </style>
+</head>
+<body>
+<!-- 三栏布局 浮动定位-->
+<div class="layout">
+    <div class="header">头部</div>
+    <div class="middle">
+        <div class="left">左边栏</div>
+        <div class="right">右边栏</div>
+        <div class="center">中间栏</div>
+    </div>
+    <div class="footer">底部</div>
+</div>
+<!-- 三栏布局 浮动定位-->
+</body>
+</html>

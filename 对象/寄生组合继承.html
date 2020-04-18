@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>寄生组合继承</title>
+</head>
+<body>
+
+<script>
+    function object(o){
+        function F(){}
+        F.prototype = o;
+        return new F();
+    }
+
+    function inheritPrototype(subType, superType){
+        // 创建超类类型的一个副本
+        let prototype = object(superType.prototype);
+        // 为创建的副本创建constructor属性
+        prototype.constructor = subType;
+        // 将创建的副本赋值给子类型的原型
+        subType.prototype = prototype;
+    }
+
+    function SuperType(name){
+        this.name = name;
+        this.colors = ["red", "blue", "green"];
+    }
+    SuperType.prototype.sayName = function(){
+        alert(this.name);
+    };
+
+    function SubType(name, age){
+        SuperType.call(this, name);
+        this.age = age;
+    }
+    inheritPrototype(SubType, SuperType);
+    SubType.prototype.sayAge = function(){
+        alert(this.age);
+    };
+
+    let son1 = new SubType();
+
+</script>
+</body>
+</html>

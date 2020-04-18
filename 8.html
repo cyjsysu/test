@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="line" style="width: 100px;height: 100px; background-color: red;"></div>
+
+<script>
+    // 自写bind
+    function test() {
+        return arguments;
+    }
+
+    let tmp = test('a', 'b', 'c');
+    //console.log(tmp);
+    let args = [].shift.call(tmp);
+    args = [].slice.call(tmp);
+    //console.log(args);
+
+    Function.prototype.bind2 = function (arg) {
+        console.log(arg);
+        console.log('####', arguments);
+        console.log('$$$$', this);
+        let self = this;                       // 保存原函数
+        let context = [].shift.call(arguments); // 保存需要绑定的this上下文
+        let args = [].slice.call(arguments);    // 剩余的参数转为数组
+        return function () {                    // 返回一个新函数
+            console.log(args, arguments);
+            self.apply(context, [].concat.call(args, [].slice.call(arguments)));
+        }
+    };
+
+    Function.prototype.myBind = function(thisArg) {
+        // thisArg只有第一个参数，arguments含有全部参数
+        console.log('thisArg', thisArg);
+        if (typeof this !== 'function') {
+            return;
+        }
+        var _self = this;
+        console.log('self', _self);
+        console.log('arguments', arguments);
+        var args = Array.prototype.slice.call(arguments, 1);
+        console.log('args', args);
+        var fnBound = function () {
+            // 检测 New
+            // 如果当前函数的this指向的是构造函数中的this 则判定为new 操作
+
+            var _this = this instanceof _self ? this : thisArg;
+            return _self.apply(_this, args.concat(Array.prototype.slice.call(arguments)));
+        };
+        // 为了完成 new操作
+        // 还需要做一件事情 执行原型 链接 （思考题，为什么？
+        fnBound.prototype = this.prototype;
+        return fnBound;
+    };
+
+
+    function foo(name) {
+        this.name = name;
+    }
+
+    var obj = {};
+    var bar = foo.myBind(obj);
+    //console.log('bar', bar);
+    console.log('=============================');
+    bar('Anne');
+    // console.log(obj.name);  // Jack
+    // var alice = new bar('Alice');
+    // console.log(obj.name);  // Jack
+    // console.log(alice.name);    // Alice
+
+    // document.getElementById('line').onclick = function(nation){
+    //     console.log('this', this, nation);
+    // }.myBind(window, 'China');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="test">
+    <input id="input" type="text" value="testing">
+    <h2 id="output"></h2>
+</div>
+
+<script>
+    let obj = {};
+    let oInput = document.getElementById('input');
+    let oOutput = document.getElementById('output');
+    oOutput.innerText = oInput.value;
+    Object.defineProperty(obj, 'content', {
+        get() {
+            return obj;
+        },
+        set(v) {
+            oInput.value = v;
+            oOutput.innerText = v;
+        }
+    });
+    oInput.addEventListener('keyup', function(e){
+        obj.content = e.target.value;
+    })
+</script>
+</body>
+</html>

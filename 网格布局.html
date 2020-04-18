@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .HolyGrail {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        header, footer {
+            flex: 1;
+            background-color: #4cd764;
+        }
+
+        .HolyGrail-body {
+            display: flex;
+            flex: 1;
+        }
+
+        .HolyGrail-content {
+            flex: 1;
+        }
+
+        .HolyGrail-nav, .HolyGrail-ads {
+            /* 两个边栏的宽度设为12em */
+            flex: 0 0 12em;
+        }
+
+        .HolyGrail-nav {
+            /* 导航放到最左边 */
+            order: -1;
+        }
+
+        .outer{
+            width: 400px;
+            height: 600px;
+            background-color: #555555;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: #4cd764;
+
+        }
+    </style>
+</head>
+
+<body >
+    <div class="outer">
+        <div class="inner">
+
+        </div>
+    </div>
+</body>
+
+</html>

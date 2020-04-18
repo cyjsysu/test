@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .coin{
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: coinRotate 2s linear infinite;
+        }
+        .coin div{
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .front{
+            background: url("./img/coin_2.png") no-repeat;
+            background-size: cover;
+        }
+        .back{
+            background: url("./img/coin_1.png") no-repeat;
+            background-size: cover;
+        }
+        @keyframes coinRotate{
+            from{transform: rotateY(0deg);}
+            50%{transform: rotateY(180deg);}
+            to{transform: rotateY(360deg);}
+        }
+    </style>
+</head>
+<body>
+<div class="coin">
+    <div class="back" style="transform: translateZ(-4px)"></div>
+    <div class="front" style="transform: translateZ(-3px)"></div>
+    <div class="front" style="transform: translateZ(-2px)"></div>
+    <div class="front" style="transform: translateZ(-1px)"></div>
+    <div class="front"></div>
+    <div class="front" style="transform: translateZ(1px)"></div>
+    <div class="front" style="transform: translateZ(2px)"></div>
+    <div class="front" style="transform: translateZ(3px)"></div>
+    <div class="front" style="transform: translateZ(4px)"></div>
+</div>
+</body>
+</html>

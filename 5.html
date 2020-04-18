@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+<script>
+function myStringify(target, func, n=0){
+    let res = '';
+
+    if(typeof target !== 'object'){
+        res = target.toString();
+        if(typeof target === 'string'){
+            res = '"' + res + '"';
+        }
+    }else{
+        let end = Array.isArray(target) ? ', ' : ',\n';
+        for(let k in target){
+            //console.log(func(target[k]));
+            if(typeof target[k] === 'object' || (func && !func(k, target[k]))){
+                continue;
+            }
+            let index = Array.isArray(target) ? '' : k + ': ';
+            let val = target[k].toString();
+            if(typeof target[k] === 'string'){
+                val = '"' + val + '"';
+            }
+            res = res + ' '.repeat(n) + index + val + end;
+        }
+
+        if(Array.isArray(target)){
+            res = '[' + res + ']';
+        }else{
+            res = '{\n' + res + '}';
+        }
+    }
+    return res;
+}
+function replacer(key, value) {
+    if (typeof value === "string") {
+        return undefined;
+    }
+    return value;
+}
+
+console.log(myStringify({name: 'chen', gender: true, money: 1234, loves: [3,4,5]}, replacer, 4));
+console.log(myStringify([9,8,7, 'string'], replacer, 4));
+</script>
+</body>
+</html>

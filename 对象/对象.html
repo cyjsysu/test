@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象</title>
+</head>
+<body>
+
+<script>
+    // let obj = {
+    //
+    // };
+    // Object.defineProperty(obj, 'name', {
+    //     writable: false,
+    //     value: 'chen',
+    // });
+    // console.log(obj.name);
+    // obj.name = 'Jack';  // 不可修改，非严格模式不报错
+    // console.log(obj.name);
+
+    // let book = {
+    //     // _year: 2004,
+    //     // edition: 1
+    // };
+    // Object.defineProperty(book, 'year', {
+    //     get: function(){
+    //         console.log('Getter');
+    //         return this._year;
+    //     },
+    //     set: function(val){
+    //         console.log('Setter');
+    //         this._year = val;
+    //         this.edition += val - 2004;
+    //     },
+    // });
+    // Object.defineProperties(book, {
+    //     name:{
+    //         value: 'ChenYj',
+    //         writable: false,
+    //     },
+    //     _year:{
+    //         value: 2004,
+    //     },
+    //     edition:{
+    //         value: 1
+    //     },
+    //     year:{
+    //         get: function () {
+    //             console.log('Getter');
+    //             return this._year;
+    //         },
+    //         set: function (val) {
+    //             console.log('Setter');
+    //             this._year = val;
+    //             this.edition += val - 2004;
+    //         },
+    //     }
+    // });
+    // book.year = 2020;
+    // console.log(book.year);
+    //
+    // let descriptor = Object.getOwnPropertyDescriptor(book, 'year');
+    // console.log(descriptor.writable, descriptor.value, descriptor.enumerable, descriptor.set);
+
+
+    function Person(){ }
+    Person.prototype.name = "Nicholas";
+    Person.prototype.age = 29;
+    Person.prototype.job = "Software Engineer";
+    Person.prototype.sayName = function(){
+        alert(this.name);
+    };
+    function Other(){
+        this.name = "Nicholas";
+        this.age = 29;
+        this.job = "Software Engineer";
+        this.sayName = function() {
+            alert(this.name);
+        }
+    }
+    let p1 = new Person(), p2 = new Person();
+    // p1.name = 'ChenYingJie';  // 不改变Person.prototype.name
+    p1.__proto__.name = 'ChenYingJie';
+    console.log(p1.name, p2.name);
+    console.log(p1.sayName === p2.sayName);  // true
+
+    let p3 = new Other(), p4 = new Other();
+    console.log(p3.sayName === p4.sayName);  // false
+
+    console.log(Person.prototype.constructor === Person);  // true
+    console.log(Person.prototype);
+    console.log(Person.prototype.isPrototypeOf(p1));  // true
+    console.log(Object.getPrototypeOf(p1) === Person.prototype);
+
+    console.log(p1.hasOwnProperty('name'));  // false, 必须是实例属性
+    console.log('name' in p1);  // true
+
+    function Human(){
+
+    }
+    Human.prototype = {
+        name: 'chen',
+        age: 24,
+    };
+    let cyj = new Human();
+    console.log(cyj.name, cyj instanceof Human);
+</script>
+</body>
+</html>

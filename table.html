@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+    <style>
+        .container{
+            display: grid;
+            grid-template-rows: 100px 100px 100px;
+            grid-template-columns: 100px 100px 100px;
+            grid-gap: 2px;
+            /*grid-template-areas: 'a a a' 'b b c' ' d d c';*/
+            grid-template-areas: 'a a a'
+            'b b b'
+            'c c c';
+        }
+        .item{
+            font-size: 2em;
+            text-align: center;
+            /*border: 1px solid #e5e4e9;*/
+            background-color: red;
+        }
+        .item-1 {
+            background-color: #ef342a;
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+
+        .item-2 {
+            background-color: #f68f26;
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+
+        .item-3 {
+            background-color: #4ba946;
+        }
+
+        .item-4 {
+            background-color: #0376c2;
+        }
+
+        .item-5 {
+            background-color: #c077af;
+        }
+
+        .item-6 {
+            background-color: #f8d29d;
+        }
+        .item-7 {
+            background-color: #0376c2;
+        }
+
+        .item-8 {
+            background-color: #c077af;
+        }
+
+        .item-9 {
+            background-color: #f8d29d;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="item item-1">1</div>
+    <div class="item item-2">2</div>
+    <div class="item item-3">3</div>
+    <div class="item item-4">4</div>
+    <div class="item item-5">5</div>
+    <div class="item item-6">6</div>
+    <div class="item item-7">7</div>
+    <div class="item item-8">8</div>
+    <div class="item item-9">9</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hash</title>
+</head>
+<body>
+
+<script>
+    class Router{
+        constructor() {
+            // hash 和 callback 键值对
+            this.routes = {};
+            // 当前 hash
+            this.currentUrl = '';
+            // 出现过的hash
+            this.history = [];
+            // 指向this.history的末尾
+            this.currentIndex = this.history.length - 1;
+
+            this.refresh = this.refresh.bind(this);
+            this.backOff = this.backOff.bind(this);
+
+            // 默认不是后退操作
+            this.isBack = false;
+            // true-事件捕获阶段执行；false-默认-冒泡阶段执行
+            window.addEventListener('load', this.refresh, false);
+            window.addEventListener('hashchange', this.refresh, false);
+
+        }
+        // 添加 hash 和 callback 键值对
+        route(path, callback){
+            this.routes[path] = callback || function () {};
+        }
+        // 跳转到currentUrl
+        refresh(){
+            // hash变化时触发，获取当前url，去除 hash 的 '#'
+            this.currentUrl = location.hash.slice(1) || '/';
+            // 如果不是后退
+            if(!this.isBack){
+                // 如果不是指向history的最后一项
+                if(this.currentIndex < this.history.length - 1){
+                    // 截取指针之前的部分存储下来（包含当前部分），后面舍弃
+                    this.history = this.history.slice(0, this.currentIndex + 1);
+                }
+                // 加入新的url
+                this.history.push(this.currentUrl);
+                // 指针后移
+                this.currentIndex++;
+            }
+            // 执行对应的回调函数
+            this.routes[this.currentUrl]();
+            console.log('指针:', this.currentIndex, 'history:', this.history);
+            this.isBack = false;
+        }
+        // 后退
+        backOff(){
+            this.isBack = true;
+            if(this.currentIndex <= 0){
+                this.currentIndex = 0;
+            }else{
+                this.currentIndex--;
+            }
+            // 后退一个hash
+            location.hash = `#${this.history[this.currentIndex]}`;
+            // 执行对应的回调函数
+            this.routes[this.history[this.currentIndex]]();
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*
+    会改变数组的方法：
+    push, pop, shift, unshift,
+    slice, splice, concat,
+    copyWithin, reverse, sort
+     */
+
+    let nums = [1,3,5,2,4,6];
+    let chars = ['a', 'b', 'c', 'd', 'e'];
+    // chars.copyWithin(2, 0);  // 会改变原数组
+    // console.log(chars);
+
+    // console.log(chars.reverse());  // 会改变原数组
+    // console.log(chars);
+
+    nums.sort();  // 会改变原数组
+    console.log(nums);
+
+    nums.slice(1,4);
+    console.log(nums);
+
+</script>
+</body>
+</html>

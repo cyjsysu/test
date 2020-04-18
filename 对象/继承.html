@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承</title>
+</head>
+<body>
+
+<script>
+    function SuperType(){
+        this.property = true;
+        this.colors = ['red', 'white'];
+    }
+    SuperType.prototype.getSuperValue = function(){
+        return this.property;
+    };
+    function SubType(){
+        this.subproperty = false;
+    }
+    //继承了 SuperType
+    SubType.prototype = new SuperType();
+    SubType.prototype.getSubValue = function (){
+        return this.subproperty;
+    };
+    var ins1 = new SubType();
+    console.log(ins1.getSuperValue());  // true
+    console.log(SubType.prototype);  // 没constructor
+
+    console.log(ins1 instanceof SubType);  // true
+    var ins2 = new SubType();
+    // console.log(ins1);
+    ins1.property = !ins1.property;  // 从ins1.__proto__读，在ins1写
+    console.log(ins1.property, ins2.property);
+    // console.log(ins1);
+
+    ins1.colors.push('black');
+    console.log(ins1.colors, ins2.colors);
+
+
+</script>
+</body>
+</html>

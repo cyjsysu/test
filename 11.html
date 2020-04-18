@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11</title>
+</head>
+<body>
+
+
+<script>
+    function download(data) {
+        console.log(data);
+    }
+    function getData(){
+        let oScript = document.createElement('script');
+        oScript.src = 'https://api.asilu.com/weather/?city=青岛&callback=download';
+        document.body.appendChild(oScript);
+    }
+    getData();
+</script>
+
+</body>
+</html>

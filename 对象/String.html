@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String</title>
+</head>
+<body>
+
+<script>
+    let str1 = 'abcd3efghijklmnabcp3';
+    let str2 = '0123456789';
+
+    console.log(str1[4], str1.charAt(4));
+    console.log(str1.charCodeAt(4));
+    console.log(str1.concat(str2));
+    console.log(str1.indexOf('fgh'));
+    console.log(str1.lastIndexOf('abc'));
+    // slice
+    // split
+
+    // substr(start, length)  slice(start, end), substring同slice
+    console.log(str1.substr(4, 3), str1.slice(4,7), str1.substring(4, 7));
+
+    // toLowerCase  toUpperCase
+    // trim
+
+    // 正则表达式
+    console.log(str1.match(/abc.3/g));
+    console.log(str1.replace(/abc.3/g, 'chen'));
+    console.log(str1.search(/bc.3/));  // 找第一个匹配的位置，只能是第一个，g没用
+</script>
+</body>
+</html>

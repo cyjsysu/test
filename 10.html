@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            left: 200px;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+
+<script>
+    let count = ()=>{
+        return new Promise((resolve, reject) => {
+            reject(3);
+        });
+    };
+    let count2 = ()=>{
+        return new Promise((resolve, reject) => {
+            reject(8);
+            resolve(4);
+        });
+    };
+    async function test(){
+        new Promise((resolve, reject) => {
+            reject(2);
+        });
+        //let a = await count();
+        let d= await count2();
+        console.log('???');
+        //console.log('d', d);
+        return 5;
+
+    }
+
+    console.log(test());  // Promise{<pending>} status: rejected, val: 8
+
+    test().then((data)=>{
+        console.log('#', data);
+    }).catch(data=>{
+        console.log('$', data);
+    });
+    // $, 8
+    // Uncaught (in promise) 2
+
+    // let b = new Promise((resolve, reject) => {
+    //     let a = new Promise((resolve1, reject1) => {
+    //         reject1(1);
+    //     });
+    //     resolve(2);
+    // }).then(data=>{
+    //     console.log('#', data);
+    // }).catch(data=>{
+    //     console.log('$', data);
+    // })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>navigator</title>
+</head>
+<body>
+
+<script>
+    // 检查插件
+    function hasPlugin(name){
+        name = name.toLowerCase();
+        for(let i = 0; i<navigator.plugins.length;++i){
+            if(navigator.plugins[i].name.toLowerCase() === name){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    console.log(hasPlugin('Chrome PDF Viewer'));
+
+</script>
+</body>
+</html>

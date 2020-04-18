@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型</title>
+</head>
+<body>
+
+<script>
+    // var A = function() {};
+    // A.prototype.n = 1;
+    // A.prototype.show1 = function () {
+    //     console.log('aa1');
+    // };
+    // var b = new A();
+    // A.prototype = {
+    //     n: 2,
+    //     m: 3
+    // };
+    // A.prototype.show2 = function () {
+    //     console.log('aa2');
+    // };
+    // A.prototype.show3 = function () {
+    //     console.log('aa3');
+    // };
+    // var c = new A();
+    //
+    // console.log(b.n);  // 1
+    // console.log(b.m);  // undefined
+    //
+    // if(b.show1){
+    //     b.show1();
+    // }else{
+    //     console.log('no show1');
+    // }
+    // if(b.show2){
+    //     b.show2();
+    // }else{
+    //     console.log('no show2');
+    // }
+    // if(b.show3){
+    //     b.show3();
+    // }else{
+    //     console.log('no show3');
+    // }
+    //
+    //
+    // console.log(c.n);  // 2
+    // console.log(c.m);  // 3
+    // if(c.show1){
+    //     c.show1();
+    // }else{
+    //     console.log('no show1');
+    // }
+    // if(c.show2){
+    //     c.show2();
+    // }else{
+    //     console.log('no show2');
+    // }
+    // if(c.show3){
+    //     c.show3();
+    // }else{
+    //     console.log('no show3');
+    // }
+
+    // var F = function() {};
+    //
+    // Object.prototype.a = function() {
+    //     console.log('a');
+    // };
+    //
+    // Function.prototype.b = function() {
+    //     console.log('b');
+    // };
+    //
+    // var f = new F();
+    //
+    // if(f.a){
+    //     f.a();
+    // }else{
+    //     console.log('no f.a');
+    // }
+    //
+    // if(f.b){
+    //     f.b();
+    // }else{
+    //     console.log('no f.b');
+    // }
+    //
+    // if(F.a){
+    //     F.a();
+    // }else{
+    //     console.log('no F.a');
+    // }
+    //
+    // if(F.b){
+    //     F.b();
+    // }else{
+    //     console.log('no F.b');
+    // }
+
+    // function Person(name) {
+    //     this.name = name
+    // }
+    // let p = new Person('Tom');
+    //
+    // console.log(p.__proto__);  // {constructor: ƒ}  Person.prototype
+    // console.log(Person.__proto__);  // f            Function.prototype
+
+    // ==============
+    // var foo = {}, F = function(){};
+    // Object.prototype.a = 'value a';
+    // Function.prototype.b = 'value b';
+    //
+    // console.log(foo.a);  //'value a
+    // console.log(foo.b);  // undefined
+    //
+    // console.log(F.a);  // v a
+    // console.log(F.b);  // v b
+
+    // ==================
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.eat = function() {
+            console.log(age + "岁的" + name + "在吃饭。");
+        }
+    }
+    Person.prototype.sayHello = function(){
+        console.log(`Hello, ${this.name}!`);
+    };
+
+    let p1 = new Person("jsliang", 24);
+    let p2 = new Person("jsliang", 24);
+
+    console.log(p1.eat === p2.eat); // false
+    console.log(p1.sayHello === p2.sayHello);  // true
+</script>
+</body>
+</html>

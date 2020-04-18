@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class</title>
+</head>
+<body>
+
+<script>
+    class Point{
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        toString() {
+            return '(' + this.x + ', ' + this.y + ')';
+        }
+
+        static test(){
+            console.log('Hello');
+        }
+    }
+    console.log(Point);
+    console.log(typeof Point);  // function
+    console.log(Point.prototype);  // 原型是一个对象 {constructor: ƒ, toString: ƒ}
+    console.log(Point.prototype.constructor);
+
+    // function PP(){
+    //     this.name = 'chen';
+    //     this.show = function(){
+    //         console.log(this.name);
+    //     }
+    //
+    // }
+    // console.log(PP.prototype);  // 函数的原型都是 {constructor: ƒ}
+
+    console.log(Object.keys(Point.prototype));  // [] 类的内部所有定义的方法，都是不可枚举的; function的可枚举
+    console.log(Object.getOwnPropertyNames(Point.prototype));  // ["constructor", "toString"]
+
+    let dot = new Point(3,4);
+    console.log(dot instanceof Point); //true
+
+    console.log(dot.hasOwnProperty('x'));  //true, x和y定义在this上
+    console.log(dot.hasOwnProperty('toString'));  //false，方法定义在原型对象Point上
+    console.log(dot.__proto__.hasOwnProperty('toString'));  //true
+
+    Point.test();  // 这样写能执行static方法，但不能执行非static方法；静态方法可以和非静态方法重名
+
+
+</script>
+</body>
+</html>

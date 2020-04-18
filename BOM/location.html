@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>location</title>
+</head>
+<body>
+
+<script>
+    function getQueryStringArgs() {
+        // 去除开头的'&'
+        let qs = (location.search.length > 0 ? location.search.substring(1) : '');
+        // 保存数据的对象
+        let args = {};
+        // 每一项分开
+        let items = qs.length ? qs.split('&') : [];
+        let item = null, name = null, value = null;
+        let len = items.length;
+        for(let i = 0;i<len;++i){
+            item = items.split('=');
+            name = decodeURIComponent(item[0]);
+            value = decodeURIComponent(item[1]);
+            if(name.length){
+                args[name] = value;
+            }
+        }
+        return args;
+    }
+</script>
+</body>
+</html>

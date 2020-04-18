@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本网格布局</title>
+    <style>
+        .container{
+            width: 800px;
+            height: 500px;
+            background-color: navajowhite;
+            margin: 40px auto;
+        }
+        .row{
+            display: flex;
+
+        }
+        .column{
+            height: 100px;
+            background-color: white;
+            flex: 1;
+            border: 5px solid navajowhite;
+            box-sizing: border-box;
+        }
+        .row:nth-of-type(4) .column{
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="column"></div>
+        <div class="column"></div>
+    </div>
+
+    <div class="row">
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+    </div>
+
+    <div class="row">
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+    </div>
+
+    <div class="row">
+        <div class="column"></div>
+        <div class="column"></div>
+    </div>
+</div>
+
+</body>
+</html>

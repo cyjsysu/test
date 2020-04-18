@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .test {
+            width: 100px;
+            height: 100px;
+            margin: 100px auto;
+            border: 1px solid black;
+            position: relative;
+            background-color: blue;
+        }
+
+        .test input[type='checkbox'] {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            opacity: 0;
+        }
+
+        .test  label{
+            position: absolute;
+            left: 20px;
+            top: 20px;
+
+        }
+        .test  label:before{
+            position: absolute;
+            content: '';
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            border:1px solid red;
+        }
+        .test  label:after{
+            position: absolute;
+            content: '';
+            width: 6px;
+            height: 12px;
+            /*background-color: red;*/
+            border-right: 2px solid transparent;
+            border-bottom: 2px solid transparent;
+            transform: rotate(45deg);
+            left: 6px;
+            top: 2px;
+        }
+
+        .test input[type='checkbox']:checked + label:before{
+            background-color: red;
+        }
+        .test input[type='checkbox']:checked + label:after{
+            background-color: red;
+            border-right: 2px solid white;
+            border-bottom: 2px solid white;
+        }
+
+    </style>
+</head>
+<body>
+<div class="test">
+    <input type='checkbox' id='checkbox1' name='checkboox[]'>
+    <label for='checkbox1'></label>
+</div>
+
+<div class="test">
+    <input type='checkbox' id='checkbox2' name='checkboox[]'>
+    <label for='checkbox2'></label>
+</div>
+
+</body>
+</html>

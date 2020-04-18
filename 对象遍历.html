@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        let obj = {
+            foo: 123,
+            bar: 'sysu',
+            id: 777,
+            name: 'cyj',
+            [Symbol('tag')]: 28,
+        };
+
+        // // 1. for...in..., 不含 Symbol
+        // for(let k in obj){
+        //     console.log(k, obj[k]);
+        // }
+        //
+        // // 2. Object.keys(), for...of..., 不含 Symbol
+        // for(let k of Object.keys(obj)){
+        //     console.log(k, obj[k]);
+        // }
+        //
+        // // 3. Object.getOwnPropertyNames(), for...of..., 不含 Symbol
+        // for(let k of Object.getOwnPropertyNames(obj)){
+        //     console.log(k, obj[k]);
+        // }
+
+        // // 4. Object.getOwnPropertySymbols(), for...of..., 只有Symbol
+        // for(let k of Object.getOwnPropertySymbols(obj)){
+        //     console.log(k, obj[k]);
+        // }
+
+        // // 5. Reflect.ownKeys(), for...of..., 所有
+        // for(let k of Reflect.ownKeys(obj)){
+        //     console.log(k, obj[k]);
+        // }
+
+        let arr = [1, 2, 3, 4, 5];
+        for(let i = 0;i<arr.length;i++){
+            console.log(arr[i]);
+        }
+        for(let i in arr){
+            console.log((arr[i]));
+        }
+        for(let v of arr){
+            console.log(v);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

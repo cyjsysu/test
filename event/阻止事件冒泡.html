@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡</title>
+    <style>
+        #aaa{
+            width: 400px;
+            height: 400px;
+            background-color: red;
+            position: relative;
+        }
+        #bbb{
+            height: 200px;
+            width: 200px;
+            background-color: green;
+            position: absolute;
+            top:0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto auto;
+        }
+        #ccc{
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+    </style>
+</head>
+<body>
+<div id="aaa">
+    <div id="bbb">
+        <div id="ccc"></div>
+    </div>
+</div>
+
+<script src="../js/jquery-3.4.1.js"></script>
+<script>
+    let oGrandpa = $('#aaa');
+    let oFather = $('#bbb');
+    let oSon = $('#ccc');
+    oGrandpa.click(function (e) {
+        console.log('aaa');
+    });
+    oFather.click(function (e) {
+        console.log('bbb');
+        //e.stopPropagation();
+        e.stopImmediatePropagation();
+    });
+    // 点击#ccc
+    // 不调用，aaa->bbb->testing->ccc
+    // stopProPagation, aaa->bbb->testing
+    // stopImmediatePropagation(), aaa->bbb
+
+
+    oFather.click(function (e) {
+        console.log('testing');
+
+    });
+    oSon.click(function (e) {
+        console.log('ccc');
+    });
+</script>
+</body>
+</html>

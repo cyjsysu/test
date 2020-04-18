@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie</title>
+</head>
+<body>
+
+
+<script>
+    function afterDate(n) {
+        let d = new Date();
+        let day = d.getDate();
+        //console.log(day);
+        d.setDate(day + n);
+        return d;
+    }
+
+    function setCookie(name, value, {expires, path, domain, secure}) {
+        // let time = new Date();
+        // time.setTime(time.getTime() + 5000);
+        // console.log(time.toGMTString());
+        // document.cookie = name + '=' + encodeURIComponent(value) + ';expires=' + time.toGMTString();
+        let cookiesStr = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+        if (expires) {
+            cookiesStr += ';expires=' + afterDate(expires);
+        }
+        if (path) {
+            cookiesStr += ';path=' + path;
+        }
+        if (domain) {
+            cookiesStr += ';domain=' + domain;
+        }
+        if (secure) {
+            cookiesStr += ';secure';
+        }
+        document.cookie = cookiesStr;
+    }
+
+    function getCookie(name) {
+        let cookieStr = decodeURIComponent(document.cookie);
+        //console.log(cookieStr.search(/(^狼王=)|(; 狼王=)/));
+
+        let start = cookieStr.search(eval(`/^${name}=/`));
+        if (start === -1) {
+            start = cookieStr.search(eval(`/; ${name}=/`));
+        }
+        if (start === -1) {
+            return null;
+        } else {
+            start++;
+        }
+        let end = cookieStr.indexOf(';', start);
+        if (end === -1) {
+            end = cookieStr.length;
+        }
+        return cookieStr.slice(start, end);
+
+    }
+
+    function removeCookie(name){
+        document.cookie = encodeURIComponent(name) + '=;expires=' + new Date(0);
+    }
+    setCookie('超人', '陈英杰', {epires: 1});
+    setCookie('狼王', '搭建', {epires: 1});
+    setCookie('吸血鬼', '太惹人', {epires: 1});
+    console.log(document.cookie);
+    console.log(decodeURIComponent(document.cookie));
+    console.log(getCookie('狼王'));
+    removeCookie('狼王');
+    console.log(decodeURIComponent(document.cookie));
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+    </script>
+    <style>
+        .box{
+            /*background-color: blue;*/
+            width: 170px;
+            height: 170px;
+            /*padding: 5px 0 0 5px;*/
+            box-sizing: border-box;
+        }
+        .brick{
+            width: 50px;
+            height: 50px;
+            float: left;
+            border: 5px solid blue;
+            margin: 0 -5px -5px 0;
+            background-color: white;
+            text-align: center;
+            line-height: 50px;
+            z-index: 0;
+            box-sizing: content-box;
+        }
+        .brick:hover{
+            border-color: red;
+            transform: translateZ(4px);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="brick">1</div>
+        <div class="brick">2</div>
+        <div class="brick">3</div>
+        <div class="brick">4</div>
+        <div class="brick">5</div>
+        <div class="brick">6</div>
+        <div class="brick">7</div>
+        <div class="brick">8</div>
+        <div class="brick">9</div>
+    </div>
+</body>
+</html>

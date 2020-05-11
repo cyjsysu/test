@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>async</title>
+</head>
+<body>
+
+
+<script>
+    const fs = require('fs');
+
+    const readFile = function (fileName) {
+        return new Promise(function (resolve, reject) {
+            fs.readFile(fileName, function(error, data) {
+                if (error) return reject(error);
+                resolve(data);
+            });
+        });
+    };
+
+    const asyncReadFile = async function(){
+        const f1 = await readFile('./file/css待学.txt');
+        const f2 = await readFile('./file/需要系统学习.txt');
+
+    }
+</script>
+</body>
+</html>
